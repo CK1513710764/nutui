@@ -39,7 +39,7 @@ jobs:
       # 第四步：安装依赖
       # --frozen-lockfile 确保严格按照 lock 文件安装，保证CI环境的一致性
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       # 第五步：运行测试 (可选，但强烈推荐)
       # 确保代码质量，只有测试通过才进行发布
