@@ -1,0 +1,59 @@
+# 工作流的名称，会显示在 GitHub Actions 页面
+name: Publish to npm
+
+# 触发工作流的条件
+on:
+  # 当有 push 事件推送到 main 分支时触发
+  push:
+    branches:
+      - main # ‼️ 确保这个分支名和你的主分支名一致 (可能是 main 或 master)
+
+# 定义工作流要执行的任务 (jobs)
+jobs:
+  # 定义一个名为 "publish" 的任务
+  publish:
+    # 指定这个任务运行在最新的 Ubuntu 虚拟机上
+    runs-on: ubuntu-latest
+
+    # 定义任务的步骤 (steps)
+    steps:
+      # 第一步：检出代码
+      # 使用官方的 actions/checkout@v4 动作来拉取你的仓库代码
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 第二步：设置 Node.js 环境
+      # 使用官方的 actions/setup-node@v4 动作来安装指定版本的 Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20" # 推荐使用一个LTS版本
+          registry-url: "https://registry.npmjs.org/" # 关键！直接将环境的 registry 指向官方源
+
+      # 第三步：安装 pnpm (如果构建环境默认没有)
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8 # 指定 pnpm 的版本
+
+      # 第四步：安装依赖
+      # --frozen-lockfile 确保严格按照 lock 文件安装，保证CI环境的一致性
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # 第五步：运行测试 (可选，但强烈推荐)
+      # 确保代码质量，只有测试通过才进行发布
+      - name: Run tests
+        run: pnpm test
+
+      # 第六步：打包组件库
+      # 运行你在 package.json 中定义的 build 脚本
+      - name: Build package
+        run: pnpm build
+
+      # 第七步：发布到 npm
+      # 关键！使用我们之前存放在 GitHub Secrets 中的 NPM_TOKEN
+      - name: Publish to npm
+        run: pnpm publish --no-git-checks --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.CICD_TOKEN }}
