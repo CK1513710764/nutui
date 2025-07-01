@@ -2,6 +2,18 @@
   "name": "nutui",
   "private": true,
   "version": "0.0.1",
+  "description": "一个功能丰富的组件库",
+  "author": "CK1513710764 <jianguolingyun1024@gmail.com>",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "nutui",
+    "ui"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CK1513710764/nutui.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -13,8 +25,6 @@
   },
   "dependencies": {
     "@storybook/addon-actions": "^9.0.8",
-    "@storybook/blocks": "^9.1.2",
-    "@types/classnames": "^2.3.4",
     "classnames": "^2.5.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
