@@ -1,22 +1,38 @@
 {
-  "name": "nutui",
-  "private": true,
+  "name": "@ck1513710764/nutui",
   "version": "0.0.1",
   "description": "一个功能丰富的组件库",
   "author": "CK1513710764 <jianguolingyun1024@gmail.com>",
   "type": "module",
   "license": "MIT",
   "keywords": [
+    "react",
+    "typescript",
     "nutui",
-    "ui"
+    "ui",
+    "component-library"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/CK1513710764/nutui.git"
   },
+  "homepage": "https://nutui-green.vercel.app/?path=/docs/general-button--docs",
+  "main": "./dist/nutui.es.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/nutui.es.js",
+      "require": "./dist/nutui.umd.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "jest",
@@ -56,6 +72,7 @@
     "ts-node": "^10.9.2",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
-    "vite": "^7.1.2"
+    "vite": "^7.1.2",
+    "vite-plugin-dts": "^4.5.4"
   }
 }
