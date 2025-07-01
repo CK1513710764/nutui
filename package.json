@@ -1,8 +1,8 @@
 {
-  "name": "@ck1513710764/nutui",
+  "name": "@jianguolingyun/nutui",
   "version": "0.0.1",
   "description": "一个功能丰富的组件库",
-  "author": "CK1513710764 <jianguolingyun1024@gmail.com>",
+  "author": "jianguolingyun <chenkai030905@qq.com>",
   "type": "module",
   "license": "MIT",
   "keywords": [
