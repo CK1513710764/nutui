@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    // --- 你已有的配置 (全部保留) ---
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2022",
     "useDefineForClassFields": true,
@@ -12,16 +13,29 @@
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
-    "noEmit": true,
+    // "noEmit": true, // ‼️ 我们需要修改这一行
     "jsx": "react-jsx",
 
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
+    // "erasableSyntaxOnly": true, // 这一行可能在新版本中已不推荐，可以考虑移除
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    // --- ‼️‼️ 以下是为打包库而新添加/修改的核心配置 ‼️‼️ ---
+
+    // 1. 告诉 TypeScript 需要为我们的代码生成类型声明文件 (.d.ts)。
+    "declaration": true,
+
+    // 2. 告诉 TypeScript 只生成类型文件，不要生成 JS 文件。
+    //    它会覆盖上面的 "noEmit": true，这是一个更精确的指令。
+    "emitDeclarationOnly": true,
+
+    // 3. (可选但推荐) 指定 .d.ts 文件的输出目录，
+    //    vite-plugin-dts 会读取这个配置来决定输出位置。
+    "declarationDir": "./dist"
   },
   "include": ["src"]
 }
