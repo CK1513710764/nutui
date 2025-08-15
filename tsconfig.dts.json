@@ -1,27 +1,27 @@
-// tsconfig.dts.json
 {
   "compilerOptions": {
-    // --- 核心指令 ---
-    "declaration": true, // 必须：开启 .d.ts 文件生成
-    "emitDeclarationOnly": true, // 必须：只生成 .d.ts，不生成 .js
-    "outDir": "dist-types-test", // 必须：将产物输出到一个全新的、干净的目录
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
 
-    // --- 必要的项目配置 ---
-    "jsx": "react-jsx", // 支持 JSX 语法
-    "moduleResolution": "node", // 解析模块的方式
-    "esModuleInterop": true, // 允许 commonjs 和 es module 互操作
-    "skipLibCheck": true, // 跳过对库文件的检查，加快速度
-    "target": "ESNext",
-    "module": "ESNext"
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
   },
-  // --- 指明要处理的文件范围 ---
-  "include": ["src"], // 只处理 src 目录
-  "exclude": [
-    // 排除不需要生成类型的文件
-    "node_modules",
-    "dist",
-    "src/**/*.test.tsx",
-    "src/**/*.stories.tsx",
-    "src/**/*.stories.mdx"
-  ]
+  "include": ["src/index.tsx", "src/components/**/*", "src/hooks/**/*"]
 }
