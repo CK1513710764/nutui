@@ -1,6 +1,6 @@
 {
   "name": "@jianguolingyun/nutui",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "一个功能丰富的组件库",
   "author": "jianguolingyun <chenkai030905@qq.com>",
   "type": "module",
@@ -25,7 +25,7 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/nutui.es.js",
+      "import": "./dist/nutui.js",
       "require": "./dist/nutui.umd.cjs",
       "types": "./dist/index.d.ts"
     },
