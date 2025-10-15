@@ -46,32 +46,32 @@ jobs:
       # 使用 test:nowatch 脚本，因为它不会进入“观察模式”，运行完就会退出
       - name: Run tests
         run: npm run test:nowatch
-    deploy-storybook:
-      # 1. 只有在 build-and-test 任务成功后才运行
-      needs: build-and-test
+  deploy-storybook:
+    # 1. 只有在 build-and-test 任务成功后才运行
+    needs: build-and-test
 
-      # 2. 只有当代码被 push 到 main 分支时才运行（PR 时不运行）
-      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # 2. 只有当代码被 push 到 main 分支时才运行（PR 时不运行）
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-        - name: Use Node.js
-          uses: actions/setup-node@v4
-          with:
-            node-version: '22.21.0'
-            cache: 'npm'
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.21.0'
+          cache: 'npm'
 
-        - name: Install dependencies
-          run: npm install --legacy-peer-deps
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
 
-        - name: Build Storybook
-          run: npm run build-storybook
+      - name: Build Storybook
+        run: npm run build-storybook
 
-        - name: Deploy to GitHub Pages
-          run: npm run deploy-storybook
-          env:
-            # 3. 需要一个 Personal Access Token (PAT) 来获得推送权限
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy to GitHub Pages
+        run: npm run deploy-storybook
+        env:
+          # 3. 需要一个 Personal Access Token (PAT) 来获得推送权限
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
