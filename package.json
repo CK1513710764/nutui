@@ -48,7 +48,7 @@
     "test:nowatch": "cross-env CI=true react-scripts test",
     "eject": "react-scripts eject",
     "build-ts": "tsc -p tsconfig.build.json",
-    "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
+    "build-css": "sass ./src/styles/index.scss ./dist/index.css",
     "prepublishOnly": "npm run test:nowatch && npm run lint && npm run build",
     "@types/react": "^18.0.8",
     "prepare": "husky install",
