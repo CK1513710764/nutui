@@ -69,9 +69,3 @@ jobs:
 
       - name: Build Storybook
         run: npm run build-storybook
-
-      - name: Deploy to GitHub Pages
-        run: npm run deploy-storybook
-        env:
-          # 3. 需要一个 Personal Access Token (PAT) 来获得推送权限
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

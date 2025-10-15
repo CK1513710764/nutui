@@ -54,6 +54,7 @@
     "prepare": "husky install",
     "storybook": "npx sass ./src/styles/index.scss ./dist/index.css && storybook dev -p 6006",
     "build-storybook": "npm run build-css && storybook build",
+    "deploy-storybook": "deploy-storybook",
     "build-es": "rollup --config rollup/rollup.esm.config.js",
     "build-umd": "rollup --config rollup/rollup.umd.config.js"
   },
