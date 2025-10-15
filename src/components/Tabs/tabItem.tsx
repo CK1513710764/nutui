@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactNode } from 'react';
 
 export interface TabItemProps {
   /** Tab选项上面的文字 */
@@ -9,11 +9,7 @@ export interface TabItemProps {
 }
 
 export const TabItem: FC<TabItemProps> = ({ children }) => {
-  return (
-    <div className="viking-tab-panel">
-      {children}
-    </div>
-  )
-}
+  return <div className="viking-tab-panel">{children}</div>;
+};
 
 export default TabItem;

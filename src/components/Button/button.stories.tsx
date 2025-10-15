@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 // 旧的 import 已被替换为新的 Meta 和 StoryObj 类型
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react';
 //import WelcomeMDX from '../Welcome/Welcome.stories.mdx'
-import Button from './button'
+import Button from './button';
 
 // https://github.com/storybookjs/storybook/issues/15574
 
@@ -15,7 +15,7 @@ const meta: Meta<typeof Button> = {
   //     page: WelcomeMDX
   //   }
   // }
-}
+};
 
 export default meta;
 
@@ -86,7 +86,10 @@ export const CButtonWithType: Story = {
     <>
       <Button btnType="primary"> primary button </Button>
       <Button btnType="danger"> danger button </Button>
-      <Button btnType="link" href="https://google.com"> link button </Button>
+      <Button btnType="link" href="https://google.com">
+        {' '}
+        link button{' '}
+      </Button>
     </>
   ),
 };

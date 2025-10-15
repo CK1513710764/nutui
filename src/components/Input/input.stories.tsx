@@ -1,6 +1,6 @@
-import React from 'react'
-import type { Meta, StoryObj } from '@storybook/react'
-import { Input } from './input'
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Input } from './input';
 
 const meta: Meta<typeof Input> = {
   title: 'Input',
@@ -13,7 +13,7 @@ const meta: Meta<typeof Input> = {
       </div>
     ),
   ],
-}
+};
 export default meta;
 
 type Story = StoryObj<typeof meta>;
@@ -21,54 +21,42 @@ type Story = StoryObj<typeof meta>;
 export const ADefault: Story = {
   name: '默认的 Input',
   args: {
-    placeholder: '漂亮的 Input'
+    placeholder: '漂亮的 Input',
   },
-}
+};
 
 export const BDisabled: Story = {
   name: '被禁用的 Input',
   args: {
     placeholder: 'disabled input',
-    disabled: true
+    disabled: true,
   },
-}
+};
 
 export const CIcon: Story = {
   name: '带图标的 Input',
   args: {
     placeholder: 'input with icon',
-    icon: 'search'
+    icon: 'search',
   },
-}
+};
 
 export const DSizeInput: Story = {
   name: '大小不同的 Input',
   render: () => (
     <>
-      <Input
-        defaultValue="large size"
-        size="lg"
-      />
-      <Input
-        placeholder="small size"
-        size="sm"
-      />
+      <Input defaultValue="large size" size="lg" />
+      <Input placeholder="small size" size="sm" />
     </>
   ),
-}
+};
 
 export const EPandInput: Story = {
   name: '带前后缀的 Input',
   render: () => (
     <>
-      <Input
-        defaultValue="prepend text"
-        prepend="https://"
-      />
-      <Input
-        defaultValue="google"
-        append=".com"
-      />
+      <Input defaultValue="prepend text" prepend="https://" />
+      <Input defaultValue="google" append=".com" />
     </>
   ),
-}
+};
