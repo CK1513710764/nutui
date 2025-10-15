@@ -1,5 +1,5 @@
 {
-  "name": "NutUI1024",
+  "name": "nutui1024",
   "version": "1.0.5",
   "description": "React components library",
   "author": "jianguolingyun",
@@ -14,6 +14,9 @@
     "UI",
     "React"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "homepage": "https://nutui-inky.vercel.app/?path=/docs/configure-your-project--docs",
   "repository": {
     "type": "git",
