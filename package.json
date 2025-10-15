@@ -109,7 +109,6 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-storybook": "^9.1.13",
-    "husky": "^8.0.3",
     "lint-staged": "^16.2.5",
     "postcss-normalize": "^10.0.1",
     "postcss-preset-env": "^7.6.0",
@@ -128,6 +127,7 @@
     "storybook": "^9.1.13",
     "style-loader": "^4.0.0",
     "typescript": "^4.6.4",
-    "webpack": "^5.72.0"
+    "webpack": "^5.72.0",
+    "husky": "^8.0.0"
   }
 }
