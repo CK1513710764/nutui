@@ -1,5 +1,5 @@
 {
-  "name": "NutUI",
+  "name": "NutUI1024",
   "version": "1.0.4",
   "description": "React components library",
   "author": "jianguolingyun",
@@ -17,7 +17,7 @@
   "homepage": "http://vikingship.xyz",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vikingmute/vikingship"
+    "url": "https://github.com/CK1513710764/nutui.git"
   },
   "files": [
     "dist"
@@ -127,6 +127,7 @@
     "rollup-plugin-typescript2": "^0.31.2",
     "sass": "^1.93.2",
     "sass-loader": "^12.6.0",
+    "semantic-release": "^25.0.1",
     "storybook": "^9.1.13",
     "style-loader": "^4.0.0",
     "typescript": "^4.6.4",

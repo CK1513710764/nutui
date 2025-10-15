@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main # 只在 main 分支有更新时触发
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Release to npm
+        # 运行 semantic-release
+        run: npx semantic-release
+        env:
+          # 将我们刚刚配置的 Secrets 传递给命令
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
