@@ -66,7 +66,7 @@
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix",
       "prettier --write",
-      "npm test:nowatch -- --bail --findRelatedTests --passWithNoTests"
+      "npm run test:nowatch -- --bail --findRelatedTests --passWithNoTests"
     ]
   },
   "browserslist": {

@@ -1,0 +1,48 @@
+# 工作流的名称
+name: Node.js CI
+
+# 触发工作流的事件
+on:
+  # 1. 当有代码被 push 到 main 分支时触发
+  push:
+    branches: ['main']
+  # 2. 当有 Pull Request 提交到 main 分支时触发
+  pull_request:
+    branches: ['main']
+
+# 定义一系列要执行的任务 (Jobs)
+jobs:
+  # 我们只有一个任务，把它命名为 build
+  build:
+    # 指定运行此任务的虚拟机环境
+    runs-on: ubuntu-latest
+
+    # 定义任务中的一系列步骤 (Steps)
+    steps:
+      # 第一步：检出代码
+      # 使用一个社区预设的 Action，名为 actions/checkout
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 第二步：设置 Node.js 环境
+      # 使用 actions/setup-node 来安装指定版本的 Node.js
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.21.0' # 指定一个与您本地开发环境兼容的 Node.js 版本
+          cache: 'npm' # 启用 npm 缓存，可以加快后续的安装速度
+
+      # 第三步：安装依赖
+      # 运行我们熟悉的命令
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      # 第四步：运行代码检查
+      # 注意：在 CI 环境中，我们通常不需要 --fix，因为我们只想知道是否通过，而不是去修改它
+      - name: Run lint check
+        run: npm run lint
+
+      # 第五步：运行单元测试
+      # 使用 test:nowatch 脚本，因为它不会进入“观察模式”，运行完就会退出
+      - name: Run tests
+        run: npm run test:nowatch
